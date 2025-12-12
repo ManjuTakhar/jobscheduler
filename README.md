@@ -107,26 +107,62 @@ See the `examples/jobs.d/` directory for example job definitions:
 
 ## Architecture
 
+### Project Structure
+
+The project is organized into modular components:
+
+```
+job_scheduler/
+├── core/                    # Core scheduling components
+│   ├── scheduler.py         # Main JobScheduler class
+│   ├── scheduled_job.py     # ScheduledJob base and implementations
+│   ├── job_executor.py      # Job execution logic
+│   └── schedule_manager.py  # Schedule parsing and creation
+├── models/                  # Data models
+│   ├── job_models.py        # Job and Task models
+│   └── db_models.py         # Database models
+├── database/                # Database components
+│   ├── db_session.py        # Database session management
+│   └── persistence.py       # Persistence layer
+├── executors/               # Task executors
+│   └── task_executors.py    # Task execution implementations
+├── watchers/                # File watchers
+│   └── file_watcher.py      # Job file watcher
+├── logging/                 # Logging components
+│   ├── job_logger.py        # Job execution logging
+│   └── scheduler_logger.py  # Scheduler event logging
+├── utils/                   # Utility components
+│   ├── config.py            # Configuration management
+│   ├── retry_handler.py    # Retry mechanism
+│   ├── resource_limiter.py # Resource management
+│   └── metrics.py           # Metrics collection
+├── main.py                  # Application entry point
+└── __init__.py              # Package exports
+```
+
 ### Components
 
-1. **JobScheduler**: Core scheduling engine that manages job execution
-2. **JobFileWatcher**: Monitors the jobs directory for file changes
-3. **TaskExecutor**: Extensible system for executing different task types
-4. **Models**: Job and Task data structures
+1. **JobScheduler** (`core/scheduler.py`): Core scheduling engine that manages job execution
+2. **JobFileWatcher** (`watchers/file_watcher.py`): Monitors the jobs directory for file changes
+3. **TaskExecutor** (`executors/task_executors.py`): Extensible system for executing different task types
+4. **Models** (`models/`): Job and Task data structures
+5. **Database** (`database/`): Persistence layer for jobs and executions
+6. **Logging** (`logging/`): Structured logging for jobs and scheduler events
+7. **Utils** (`utils/`): Configuration, retry handling, resource management, and metrics
 
 ### Extensibility
 
 To add a new task type:
 
-1. Create a new task class in `models.py` (e.g., `HttpRequestTask`)
-2. Create a corresponding executor in `task_executors.py` (e.g., `HttpRequestExecutor`)
+1. Create a new task class in `models/job_models.py` (e.g., `HttpRequestTask`)
+2. Create a corresponding executor in `executors/task_executors.py` (e.g., `HttpRequestExecutor`)
 3. Register the executor in `TaskExecutorFactory`
-4. Update `Task.from_dict()` to handle the new type
+4. Update `Task.from_dict()` in `models/job_models.py` to handle the new type
 
 Example:
 
 ```python
-# In task_executors.py
+# In executors/task_executors.py
 class HttpRequestExecutor(TaskExecutor):
     def execute(self, task: HttpRequestTask) -> bool:
         # Implementation
@@ -146,11 +182,16 @@ The scheduler logs all job executions with the following information:
 
 Logs are output to stdout/stderr and can be redirected to files or log management systems.
 
-## Limitations
+## Production Features
 
-- **In-Memory Only**: Job state is not persisted. Restarting the service rebuilds state from job files.
-- **No Job History**: Execution history is not stored beyond logs.
-- **File-Based Only**: Jobs must be defined as JSON files in the watched directory.
+- **Database Persistence**: Optional SQLite or PostgreSQL support for job and execution history
+- **Configuration Management**: Environment-based configuration with validation
+- **Retry Mechanism**: Automatic retries for failed jobs with exponential backoff
+- **Resource Management**: Concurrency limits and resource tracking
+- **Metrics**: Prometheus metrics for monitoring
+- **Docker Support**: Containerized deployment with docker-compose
+
+See `PRODUCTION.md` and `DEPLOYMENT.md` for production deployment details.
 
 ## Requirements
 

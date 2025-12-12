@@ -5,8 +5,8 @@ import sys
 import logging
 from pathlib import Path
 
-from .scheduler import JobScheduler
-from .file_watcher import JobFileWatcher
+from .core import JobScheduler
+from .watchers import JobFileWatcher
 
 
 def setup_logging(log_level: str = "INFO"):
