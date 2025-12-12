@@ -1,0 +1,10 @@
+{
+  "job_id": "sync-data-001",
+  "description": "Sync data from external API every 15 minutes",
+  "schedule": "*/15 * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/sync_external_data.py"
+  }
+}
+

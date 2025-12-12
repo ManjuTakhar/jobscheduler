@@ -1,0 +1,10 @@
+{
+  "job_id": "midnight-task-001",
+  "description": "Run at midnight every day",
+  "schedule": "0 0 * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/midnight_maintenance.py"
+  }
+}
+

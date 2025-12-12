@@ -1,0 +1,10 @@
+{
+  "job_id": "business-hours-001",
+  "description": "Run during business hours (9 AM to 5 PM, Monday to Friday)",
+  "schedule": "0 9-17 * * 1-5",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/business_hours_task.py"
+  }
+}
+

@@ -1,0 +1,10 @@
+{
+  "job_id": "database-vacuum-001",
+  "description": "Vacuum database every Sunday at 3 AM",
+  "schedule": "0 3 * * 0",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/psql -U postgres -d mydb -c 'VACUUM ANALYZE;'"
+  }
+}
+

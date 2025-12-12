@@ -1,0 +1,10 @@
+{
+  "job_id": "onetime-deployment-2025",
+  "description": "One-time deployment task for March 2025",
+  "schedule": "2025-03-01T10:00:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/bash /opt/scripts/deploy.sh"
+  }
+}
+

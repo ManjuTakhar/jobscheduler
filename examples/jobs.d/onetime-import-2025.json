@@ -1,0 +1,10 @@
+{
+  "job_id": "onetime-import-2025",
+  "description": "One-time data import on May 1, 2025",
+  "schedule": "2025-05-01T06:00:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/import_data.py"
+  }
+}
+

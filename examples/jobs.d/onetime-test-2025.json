@@ -1,0 +1,10 @@
+{
+  "job_id": "onetime-test-2025",
+  "description": "One-time test execution for validation",
+  "schedule": "2025-12-31T23:59:59Z",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/echo 'Test completed successfully'"
+  }
+}
+

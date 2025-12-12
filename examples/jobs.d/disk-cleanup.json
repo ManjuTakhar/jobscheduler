@@ -1,0 +1,10 @@
+{
+  "job_id": "disk-cleanup-001",
+  "description": "Check and cleanup disk space daily",
+  "schedule": "0 3 * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/df -h && /usr/bin/find /var/log -name '*.log' -mtime +30 -delete"
+  }
+}
+

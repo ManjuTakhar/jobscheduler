@@ -1,0 +1,10 @@
+{
+  "job_id": "daily-cleanup-001",
+  "description": "Daily cleanup of temporary files",
+  "schedule": "0 2 * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/find /tmp -type f -mtime +7 -delete"
+  }
+}
+

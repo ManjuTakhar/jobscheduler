@@ -1,0 +1,10 @@
+{
+  "job_id": "metrics-export-001",
+  "description": "Export metrics to external system every hour",
+  "schedule": "0 * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/export_metrics.py"
+  }
+}
+

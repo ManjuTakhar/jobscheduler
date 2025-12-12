@@ -1,0 +1,10 @@
+{
+  "job_id": "health-check-001",
+  "description": "Health check every 5 minutes",
+  "schedule": "*/5 * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/curl -f http://localhost:8080/health || echo 'Health check failed'"
+  }
+}
+

@@ -1,0 +1,10 @@
+{
+  "job_id": "monthly-archive-001",
+  "description": "Archive old logs on the first day of each month",
+  "schedule": "0 3 1 * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/tar -czf /archive/logs_$(date +%Y%m).tar.gz /var/log/*.log && /usr/bin/find /var/log -name '*.log' -mtime +30 -delete"
+  }
+}
+

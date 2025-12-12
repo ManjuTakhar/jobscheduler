@@ -1,0 +1,10 @@
+{
+  "job_id": "cache-warmup-001",
+  "description": "Warm up cache every 30 minutes",
+  "schedule": "*/30 * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/warmup_cache.py"
+  }
+}
+

@@ -1,0 +1,10 @@
+{
+  "job_id": "onetime-upgrade-2025",
+  "description": "System upgrade scheduled for September 15, 2025",
+  "schedule": "2025-09-15T03:00:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/apt-get update && /usr/bin/apt-get upgrade -y"
+  }
+}
+

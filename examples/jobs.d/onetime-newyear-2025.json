@@ -1,0 +1,10 @@
+{
+  "job_id": "onetime-newyear-2025",
+  "description": "One-time task for New Year 2025",
+  "schedule": "2025-01-01T00:00:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/newyear_greeting.py"
+  }
+}
+

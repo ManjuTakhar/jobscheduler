@@ -1,0 +1,10 @@
+{
+  "job_id": "quarterly-report-001",
+  "description": "Generate quarterly report on first day of quarter",
+  "schedule": "0 8 1 1,4,7,10 *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/quarterly_report.py"
+  }
+}
+

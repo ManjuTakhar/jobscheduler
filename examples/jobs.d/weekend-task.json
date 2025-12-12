@@ -1,0 +1,10 @@
+{
+  "job_id": "weekend-task-001",
+  "description": "Run only on weekends (Saturday and Sunday)",
+  "schedule": "0 10 * * 0,6",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/weekend_maintenance.py"
+  }
+}
+

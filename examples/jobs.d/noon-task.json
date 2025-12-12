@@ -1,0 +1,10 @@
+{
+  "job_id": "noon-task-001",
+  "description": "Run at noon every day",
+  "schedule": "0 12 * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/noon_report.py"
+  }
+}
+

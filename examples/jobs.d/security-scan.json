@@ -1,0 +1,10 @@
+{
+  "job_id": "security-scan-001",
+  "description": "Run security scan every Sunday at 2 AM",
+  "schedule": "0 2 * * 0",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/security_scan.py"
+  }
+}
+

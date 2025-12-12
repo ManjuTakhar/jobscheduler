@@ -1,0 +1,10 @@
+{
+  "job_id": "weekly-report-001",
+  "description": "Generate weekly sales report every Monday",
+  "schedule": "0 9 * * 1",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/weekly_sales_report.py"
+  }
+}
+

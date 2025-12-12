@@ -1,0 +1,10 @@
+{
+  "job_id": "hourly-backup-001",
+  "description": "Hourly database backup",
+  "schedule": "0 * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/pg_dump -U postgres mydb > /backups/hourly_$(date +%Y%m%d_%H%M%S).sql"
+  }
+}
+

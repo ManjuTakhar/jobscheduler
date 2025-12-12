@@ -1,0 +1,10 @@
+{
+  "job_id": "email-digest-001",
+  "description": "Send daily email digest at 8 AM",
+  "schedule": "0 8 * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/send_daily_digest.py"
+  }
+}
+

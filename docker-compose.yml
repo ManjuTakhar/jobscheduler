@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  scheduler:
+    build: .
+    container_name: job-scheduler
+    volumes:
+      - ./examples/jobs.d:/etc/chronoflow/jobs.d:ro
+      - ./logs:/app/logs
+      - scheduler-db:/app/data
+    environment:
+      - JOBS_DIR=/etc/chronoflow/jobs.d
+      - LOG_DIR=/app/logs
+      - LOG_LEVEL=INFO
+      - DATABASE_URL=sqlite:///./data/jobscheduler.db
+      - MAX_CONCURRENT_JOBS=50
+      - ENABLE_METRICS=true
+      - METRICS_PORT=9090
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os; exit(0 if os.path.exists('/app/logs/scheduler.log') else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: job-scheduler-db
+    environment:
+      - POSTGRES_DB=jobscheduler
+      - POSTGRES_USER=scheduler
+      - POSTGRES_PASSWORD=scheduler_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    profiles:
+      - postgres
+
+volumes:
+  scheduler-db:
+  postgres-data:
+

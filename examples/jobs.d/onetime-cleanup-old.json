@@ -1,0 +1,10 @@
+{
+  "job_id": "onetime-cleanup-old",
+  "description": "One-time cleanup of old data",
+  "schedule": "2025-08-01T04:00:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/cleanup_old_data.py"
+  }
+}
+
