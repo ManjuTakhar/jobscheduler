@@ -1,0 +1,10 @@
+{
+  "job_id": "frequent-task1",
+  "description": "Run a task every minutes.",
+  "schedule": "* * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "echo 'Task executed at $(date)' >> /tmp/task-log.txt"
+  }
+}
+

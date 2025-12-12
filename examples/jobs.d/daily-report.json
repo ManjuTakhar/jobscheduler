@@ -1,0 +1,10 @@
+{
+  "job_id": "report-002",
+  "description": "Generate the daily sales report.",
+  "schedule": "* * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "/usr/bin/python /opt/scripts/generate_sales_report.py"
+  }
+}
+

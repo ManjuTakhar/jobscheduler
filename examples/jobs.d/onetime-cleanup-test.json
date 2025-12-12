@@ -1,0 +1,10 @@
+{
+  "job_id": "cleanup-test1",
+  "description": "Test one-time cleanup job scheduled for near future.",
+  "schedule": "2025-11-20T12:28:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "echo 'One-time cleanup test executed at $(date)' >> /tmp/cleanup-test.log"
+  }
+}
+

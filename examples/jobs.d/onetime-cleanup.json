@@ -1,0 +1,10 @@
+{
+  "job_id": "cleanup-xyz1",
+  "description": "Perform a one-time cleanup of temporary files.",
+  "schedule": "2025-11-20T12:28:00Z",
+  "task": {
+    "type": "execute_command",
+    "command": "echo 'Current time is $(date)' >> /tmp/task-log2.txt"
+  }
+}
+

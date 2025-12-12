@@ -1,0 +1,10 @@
+{
+  "job_id": "frequent-task",
+  "description": "Run a task every 5 minutes.",
+  "schedule": "* * * * *",
+  "task": {
+    "type": "execute_command",
+    "command": "echo 'Current time is $(date)' >> /tmp/task-log2.txt"
+  }
+}
+
